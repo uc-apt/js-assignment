@@ -1,0 +1,87 @@
+.main-container{
+    margin: auto;
+    background-color: yellow;
+    width: 350px;
+    height: 450px;
+    border: 5px solid black;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+}
+.grid-container{
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+.grid-items{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border: 1px solid grey;
+    background-size: contain;
+}
+
+.front-style{
+    background-image: url('./assets/bg.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; 
+}
+
+.front-show-btn{
+    display: none;
+    width: 100%;
+    height: 100%; 
+}
+
+.img-card{
+    display: none;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.show-answer{
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+
+/* dash board area style */
+.dashboard-area{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    height: 200px;
+    justify-content: space-between;
+    align-items: center;
+}
+.game-modes{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    /* border: 1px solid grey; */
+}
+.options-radio{
+    cursor: pointer;
+}
+.options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 45px;
+    border: 2px solid grey;
+}
+.main-options{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100px;
+}
+.main-btn{
+    width: 140px;
+    cursor: pointer;
+}
