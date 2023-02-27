@@ -119,7 +119,7 @@ const get_random_img = () => {
 const set_img = (img,front, arr) => {
     for(let i = 0 ; i < 24 ; i++ ){
         img.item(i).src = img_arr_data[arr[i]].src;
-        front.item(i).value
+        front.item(i).value = img_arr_data[arr[i]].value;
     }
 }
 
@@ -137,7 +137,7 @@ const start_game_btn = (img) => {
         //setting the images in the random way and according to the mode
         set_img(img,front,array)
         // setting the logic according to the mode of the game
-
+        console.log(front)
         
 
     }
@@ -153,15 +153,58 @@ const start_game_btn = (img) => {
 
 // game logic 
 
-const cards =  document.querySelectorAll('.grid-items');
+const cards =  document.querySelectorAll('.front');
 // const flipCard = () => {
 //     console.log('I was clicked');
 //     console.log(this)
 // }
 cards.forEach(card => card.addEventListener('click' , flipCard))
-
+var valueSet = new Set([]);
+var idSet = new Set([]);
+var click = 1;
 function flipCard(){
-    this.classList.toggle('flip')
+    switch (click) {
+        case 1:
+            this.classList.toggle('flip');
+            valueSet.add(this.value);
+            idSet.add(this.id);
+            click += 1;
+            console.log('first pic selected');
+            console.log('value set :',valueSet);
+            console.log('id set : ',idSet);
+            console.log('click number :',click);
+            break;
+        case 2:
+            this.classList.toggle('flip');
+            valueSet.add(this.value);
+            idSet.add(this.id);
+            console.log('this is the second click');
+            console.log('value set :',valueSet);
+            console.log('id set : ',idSet);
+            console.log('click number :',click)
+            if(valueSet.size == 1){
+                console.log('These are same pics');
+                valueSet.clear();
+                idSet.clear();
+                click = 1;
+            }else {
+                for(ele of idSet.values()){
+                    const element = document.getElementById(ele);
+                    element.classList.toggle('flip');
+                    console.log('fliping the img back')
+                }
+                console.log('Not same pics');
+                valueSet.clear();
+                idSet.clear();
+                click = 1;
+                console.log('click value at last : ',click)
+            }
+            break;
+        default:
+
+            break;
+    }
+
 }
 
 
