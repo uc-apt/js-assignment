@@ -1,18 +1,15 @@
-
 //first getting the mode from the user
 let mode;
 
 const options_radio = document.getElementsByClassName('options-radio')
+var arr = [].slice.call(options_radio);
 
 // looping through the options_radio to get the value
 const get_value = () => {
     //converting the HTML collections into an array
-    var arr = [].slice.call(options_radio);
     arr.forEach((ele) => {
         if(ele.checked){
             mode = ele.value;
-            //for debugging 
-            // console.log(ele.value);
         }
     })
 }
@@ -124,12 +121,30 @@ const set_img = (img,front, arr) => {
 }
 
 
+// resetting the game logic
+// const resetGame = (img,front) => {
+
+//     for(let i = 0 ; i<24 ; i++){
+//         img.item(i).src = "";
+//         front.item(i).value = "";
+//     }
+
+//     mode = undefined ;
+
+//     arr.forEach((ele) => {
+//         if(ele.checked){
+//             ele.checked = false ;
+//         }
+//     })
+
+// }
+
 const start_game_btn = (img) => {
     if(mode === undefined){
         window.alert("Please select a mode");
     }else{
         get_value();
-        const array = get_random_img();
+        var array = get_random_img();
         console.log(array)
         const img = document.getElementsByTagName('img');
         const front = document.getElementsByClassName('front');        
@@ -137,18 +152,16 @@ const start_game_btn = (img) => {
         //setting the images in the random way and according to the mode
         set_img(img,front,array)
         // setting the logic according to the mode of the game
-        console.log(front)
-        
+        setTimeout(() => {
+            window.alert('Time up !')
+            //resetting the game setting 
+            location.reload()
+            
+        }, 60000);
 
     }
-    //adding the time restraint of 60 seconds
-    // setTimeout(() => {
-    //     console.log("You ran out of time!")
-    //     window.alert("Game over")
-    //     // reset the game settings 
-    // }, 3000);
-
 }
+
 
 
 // game logic 
@@ -162,48 +175,147 @@ cards.forEach(card => card.addEventListener('click' , flipCard))
 var valueSet = new Set([]);
 var idSet = new Set([]);
 var click = 1;
+var correct = 0;
 function flipCard(){
-    switch (click) {
-        case 1:
-            this.classList.toggle('flip');
-            valueSet.add(this.value);
-            idSet.add(this.id);
-            click += 1;
-            console.log('first pic selected');
-            console.log('value set :',valueSet);
-            console.log('id set : ',idSet);
-            console.log('click number :',click);
-            break;
-        case 2:
-            this.classList.toggle('flip');
-            valueSet.add(this.value);
-            idSet.add(this.id);
-            console.log('this is the second click');
-            console.log('value set :',valueSet);
-            console.log('id set : ',idSet);
-            console.log('click number :',click)
-            if(valueSet.size == 1){
-                console.log('These are same pics');
-                valueSet.clear();
-                idSet.clear();
-                click = 1;
-            }else {
-                for(ele of idSet.values()){
-                    const element = document.getElementById(ele);
-                    element.classList.toggle('flip');
-                    console.log('fliping the img back')
+   switch(mode){
+    case "mode1":
+        switch (click) {
+            case 1:
+                this.classList.toggle('flip');
+                valueSet.add(this.value);
+                idSet.add(this.id);
+                click += 1;
+                console.log('first pic selected');
+                console.log('value set :',valueSet);
+                console.log('id set : ',idSet);
+                console.log('click number :',click);
+                break;
+            case 2:
+                this.classList.toggle('flip');
+                valueSet.add(this.value);
+                idSet.add(this.id);
+                console.log('this is the second click');
+                console.log('value set :',valueSet);
+                console.log('id set : ',idSet);
+                console.log('click number :',click)
+                if(valueSet.size == 1){
+                    console.log('These are same pics');
+                    valueSet.clear();
+                    idSet.clear();
+                    click = 1;
+                    correct+=1;
+                    console.log('correct : ',correct )
+                    if(correct === 12){
+                        setTimeout(() => {
+                            window.alert('Congrats !')
+                            location.reload()
+                        }, 1000);
+                    }
+                }else {
+                    for(ele of idSet.values()){
+                        const element = document.getElementById(ele);
+                        element.classList.toggle('flip');
+                        console.log('fliping the img back')
+                    }
+                    console.log('Not same pics');
+                    valueSet.clear();
+                    idSet.clear();
+                    click = 1;
+                    console.log('click value at last : ',click)
                 }
-                console.log('Not same pics');
-                valueSet.clear();
-                idSet.clear();
-                click = 1;
-                console.log('click value at last : ',click)
-            }
-            break;
-        default:
+                break;
+            default:
+                break;
+        }
+    case "mode2":
+        switch (click) {
+            case 1:
+                this.classList.toggle('flip');
+                valueSet.add(this.value);
+                idSet.add(this.id);
+                click += 1;
+                console.log('first pic selected');
+                console.log('value set :',valueSet);
+                console.log('id set : ',idSet);
+                console.log('click number :',click);
+                break;
+            case 2:
+                this.classList.toggle('flip');
+                valueSet.add(this.value);
+                idSet.add(this.id);
+                console.log('this is the second click');
+                console.log('value set :',valueSet);
+                console.log('id set : ',idSet);
+                console.log('click number :',click)
+                if(valueSet.size == 2){
+                    for(ele of idSet.values()){
+                        const element = document.getElementById(ele);
+                        element.classList.toggle('flip');
+                        console.log('fliping the img back')
+                    }
+                    console.log('Not same pics');
+                    valueSet.clear();
+                    idSet.clear();
+                    click = 1;
+                    console.log('click value at last : ',click)
 
-            break;
+                }else {
+                    console.log('These are same pics');
+                    click+=1;
+                    console.log('correct : ',correct )
+                }
+                break;
+            case 3 :
+                this.classList.toggle('flip');
+                valueSet.add(this.value);
+                idSet.add(this.id);
+                console.log('this is the third click');
+                console.log('value set :',valueSet);
+                console.log('id set : ',idSet);
+                console.log('click number :',click);
+                if(valueSet.size == 2){
+                    for(ele of idSet.values()){
+                        const element = document.getElementById(ele);
+                        element.classList.toggle('flip');
+                        console.log('fliping the img back')
+                    }
+                    console.log('Not same pics');
+                    valueSet.clear();
+                    idSet.clear();
+                    click = 1;
+                    console.log('click value at last : ',click)
+                }else{
+                    console.log('These are same pics');
+                    valueSet.clear();
+                    idSet.clear();
+                    click = 1;
+                    correct+=1;
+                    console.log('correct : ',correct )
+                    if(correct === 8){
+                        setTimeout(() => {
+                            window.alert('Congrats !')
+                            location.reload()
+                        }, 1000);
+                    }
+                }
+
+            default:
+                break;
+        }
+    
+    case "mode3":
+    
+        
+
+        break;
+
+    default :
+        
+        break ;
+
     }
+
+
 
 }
 
