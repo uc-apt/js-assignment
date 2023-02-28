@@ -127,9 +127,9 @@ const start_game_btn = (img) => {
     console.log(array);
     const img = document.getElementsByTagName("img");
     const front = document.getElementsByClassName("front");
-    // console.log(img)
     //setting the images in the random way and according to the mode
     set_img(img, front, array);
+    window.alert('Press ok to start ,you will have 60 seconds')
     // setting the logic according to the mode of the game
     setTimeout(() => {
       window.alert("Time up !");
@@ -142,245 +142,196 @@ const start_game_btn = (img) => {
 // game logic
 
 const cards = document.querySelectorAll(".front");
-// const flipCard = () => {
-//     console.log('I was clicked');
-//     console.log(this)
-// }
 cards.forEach((card) => card.addEventListener("click", flipCard));
 var valueSet = new Set([]);
 var idSet = new Set([]);
 var click = 1;
 var correct = 0;
 function flipCard() {
-  switch (mode) {
-    // logic for 2 flip 
-    case "mode1":
-      switch (click) {
-        case 1:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
+  if (mode  == 'mode1'){
+    switch (click) {
+      case 1:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        click += 1;
+        break;
+      case 2:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        if (valueSet.size == 1) {
+          console.log("These are same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          correct += 1;
+          console.log("correct : ", correct);
+          if (correct === 12) {
+            setTimeout(() => {
+              window.alert("Congrats !");
+              location.reload();
+            }, 750);
+          }
+        } else {
+          for (ele of idSet.values()) {
+            const element = document.getElementById(ele);
+            element.classList.toggle("flip");
+            console.log("fliping the img back");
+          }
+          console.log("Not same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+        }
+        break;
+      default:
+        break;
+    }
+  }else if(mode == 'mode2'){
+    switch (click) {
+      case 1:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        click += 1;
+        break;
+      case 2:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        if (valueSet.size == 2) {
+          for (ele of idSet.values()) {
+            const element = document.getElementById(ele);
+            element.classList.toggle("flip");
+            console.log("fliping the img back");
+          }
+          console.log("Not same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          console.log("click value at last : ", click);
+        } else {
+          console.log("These are same pics");
           click += 1;
-          console.log("first pic selected");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          break;
-        case 2:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          console.log("this is the second click");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          if (valueSet.size == 1) {
-            console.log("These are same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            correct += 1;
-            console.log("correct : ", correct);
-            if (correct === 12) {
-              setTimeout(() => {
-                window.alert("Congrats !");
-                location.reload();
-              }, 750);
-            }
-          } else {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-              console.log("fliping the img back");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);
+        }
+        break;
+      case 3:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        if (valueSet.size == 2) {
+          for (ele of idSet.values()) {
+            const element = document.getElementById(ele);
+            element.classList.toggle("flip");
+            console.log("fliping the img back");
           }
-          break;
-        default:
-          break;
-      }
-      //logic for 3 flip
-    case "mode2":
-      switch (click) {
-        case 1:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          click += 1;
-          console.log("first pic selected");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          break;
-        case 2:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          console.log("this is the second click");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          if (valueSet.size == 2) {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-              console.log("fliping the img back");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);
-          } else {
-            console.log("These are same pics");
-            click += 1;
+          console.log("Not same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          console.log("click value at last : ", click);
+        } else {
+          console.log("These are same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          correct += 1;
+          console.log("correct : ", correct);
+          if (correct === 8) {
+            setTimeout(() => {
+              window.alert("Congrats !");
+              location.reload();
+            }, 750);
           }
-          break;
-        case 3:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          console.log("this is the third click");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          if (valueSet.size == 2) {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-              console.log("fliping the img back");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);
-          } else {
-            console.log("These are same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            correct += 1;
-            console.log("correct : ", correct);
-            if (correct === 8) {
-              setTimeout(() => {
-                window.alert("Congrats !");
-                location.reload();
-              }, 750);
-            }
-          }
+        }
 
-        default:
-          break;
-      }
-      // logic for 4 flip
-    case "mode3":
-      switch (click) {
-        case 1:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
+      default:
+        break;
+    }
+  }else if (mode == 'mode3'){
+    switch (click) {
+      case 1:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        click += 1;
+        break;
+      case 2:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        if (valueSet.size == 2) {
+          for (ele of idSet.values()) {
+            const element = document.getElementById(ele);
+            element.classList.toggle("flip");
+            console.log("fliping the img back");
+          }
+          console.log("Not same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          console.log("click value at last : ", click);
+        } else {
+          console.log("These are same pics");
           click += 1;
-          console.log("first pic selected");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          break;
-        case 2:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          console.log("this is the second click");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          if (valueSet.size == 2) {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-              console.log("fliping the img back");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);
-          } else {
-            console.log("These are same pics");
-            click += 1;
+        }
+        break;
+      case 3:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        if (valueSet.size == 2) {
+          for (ele of idSet.values()) {
+            const element = document.getElementById(ele);
+            element.classList.toggle("flip");
+            console.log("fliping the img back");
           }
-          break;
-        case 3:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          console.log("this is the third click");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          if (valueSet.size == 2) {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-              console.log("fliping the img back");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);
-          } else {
-            console.log("These are same pics");
-            click += 1;
+          console.log("Not same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          console.log("click value at last : ", click);
+        } else {
+          console.log("These are same pics");
+          click += 1;
+        }
+        break;
+      case 4:
+        this.classList.toggle("flip");
+        valueSet.add(this.value);
+        idSet.add(this.id);
+        if (valueSet.size == 2) {
+          for (ele of idSet.values()) {
+            const element = document.getElementById(ele);
+            element.classList.toggle("flip");
+            console.log("fliping the img back");
           }
-          break;
-        case 4:
-          this.classList.toggle("flip");
-          valueSet.add(this.value);
-          idSet.add(this.id);
-          console.log("this is the third click");
-          console.log("value set :", valueSet);
-          console.log("id set : ", idSet);
-          console.log("click number :", click);
-          if (valueSet.size == 2) {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-              console.log("fliping the img back");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);
-          } else {
-            console.log("These are same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;
-            correct += 1;
-            console.log('correct : ',correct);
-            if (correct === 6) {
-              setTimeout(() => {
-                window.alert("Congrats !");
-                location.reload();
-              }, 750);
-            }
+          console.log("Not same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          console.log("click value at last : ", click);
+        } else {
+          console.log("These are same pics");
+          valueSet.clear();
+          idSet.clear();
+          click = 1;
+          correct += 1;
+          console.log('correct : ',correct);
+          if (correct === 6) {
+            setTimeout(() => {
+              window.alert("Congrats !");
+              location.reload();
+            }, 750);
           }
-          break ;
-        
-            
-        default:
-          break;
-      }      
-
-    
-    default:
-      break;
+        }
+        break ;
+      
+          
+      default:
+        break;
+    }      
   }
 }
 
