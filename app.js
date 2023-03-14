@@ -1,3 +1,12 @@
+const gridContainer = document.getElementById('grid-container-main');
+console.log(typeof gridContainer)
+for(let i = 1 ; i < 25 ; i++){
+  gridContainer.innerHTML += `<div class="grid-items" id="grid-item${i}">
+  <div class="front front-style" onclick="flipCard()" id="front${i}" value=""></div>
+  <img src="" alt="pictures" class="img-card"     id="img-card${i}">
+  </div>`
+}
+
 //first getting the mode from the user
 let mode;
 
@@ -366,10 +375,12 @@ const show_btn_function = () => {
 
 //help btn functionality
 const instructions = `Instructions
-1. Series of 2 pics: 1st pic is flipped > 2nd pic is flipped > if both are same, they stay visible; if both are different, they flip back
-2. Series of 3 pics: 1st pic is flipped > 2nd pic is flipped > if both are same, they stay visible; if both are different, they flip back. 
+1. First select a mode and then click on New Game 
+2. You will get 60 seconds to complete the puzzle, different modes :-
+3. Series of 2 pics: 1st pic is flipped > 2nd pic is flipped > if both are same, they stay visible; if both are different, they flip back
+4. Series of 3 pics: 1st pic is flipped > 2nd pic is flipped > if both are same, they stay visible; if both are different, they flip back. 
 Then, 3rd pic is flipped, if it is same to the 1st and 2nd pic, it stays visible, otherwise all flip back
-3. Series of 4 pics: Logical functionality same as “series of 3 pics”, this works for matching 4 pics in continuation
+5. Series of 4 pics: Logical functionality same as “series of 3 pics”, this works for matching 4 pics in continuation
 `;
 const help_btn_function = () => {
   window.alert(instructions);
