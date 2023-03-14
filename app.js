@@ -149,7 +149,9 @@ const start_game_btn = (img) => {
 };
 
 // game logic
-
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 const cards = document.querySelectorAll(".front");
 cards.forEach((card) => card.addEventListener("click", flipCard));
 var valueSet = new Set([]);
@@ -183,15 +185,17 @@ function flipCard() {
             }, 750);
           }
         } else {
-          for (ele of idSet.values()) {
-            const element = document.getElementById(ele);
-            element.classList.toggle("flip");
-            console.log("fliping the img back");
-          }
-          console.log("Not same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
+          setTimeout(() => {
+            for (ele of idSet.values()) {
+              const element = document.getElementById(ele);
+              element.classList.toggle("flip");
+              console.log("fliping the img back");
+            }
+            console.log("Not same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+          }, 600);
         }
         break;
       default:
@@ -210,16 +214,18 @@ function flipCard() {
         valueSet.add(this.value);
         idSet.add(this.id);
         if (valueSet.size == 2) {
-          for (ele of idSet.values()) {
-            const element = document.getElementById(ele);
-            element.classList.toggle("flip");
-            console.log("fliping the img back");
-          }
-          console.log("Not same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          console.log("click value at last : ", click);
+          setTimeout(() => {
+            for (ele of idSet.values()) {
+              const element = document.getElementById(ele);
+              element.classList.toggle("flip");
+              console.log("fliping the img back");
+            }
+            console.log("Not same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            console.log("click value at last : ", click);     
+          }, 600);
         } else {
           console.log("These are same pics");
           click += 1;
@@ -230,16 +236,18 @@ function flipCard() {
         valueSet.add(this.value);
         idSet.add(this.id);
         if (valueSet.size == 2) {
-          for (ele of idSet.values()) {
-            const element = document.getElementById(ele);
-            element.classList.toggle("flip");
-            console.log("fliping the img back");
-          }
-          console.log("Not same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          console.log("click value at last : ", click);
+          setTimeout(() => {
+            for (ele of idSet.values()) {
+              const element = document.getElementById(ele);
+              element.classList.toggle("flip");
+              console.log("fliping the img back");
+            }
+            console.log("Not same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            console.log("click value at last : ", click);     
+          }, 600);
         } else {
           console.log("These are same pics");
           valueSet.clear();
@@ -271,16 +279,18 @@ function flipCard() {
         valueSet.add(this.value);
         idSet.add(this.id);
         if (valueSet.size == 2) {
-          for (ele of idSet.values()) {
-            const element = document.getElementById(ele);
-            element.classList.toggle("flip");
-            console.log("fliping the img back");
-          }
-          console.log("Not same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          console.log("click value at last : ", click);
+          setTimeout(() => {
+            for (ele of idSet.values()) {
+              const element = document.getElementById(ele);
+              element.classList.toggle("flip");
+              console.log("fliping the img back");
+            }
+            console.log("Not same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            console.log("click value at last : ", click);     
+          }, 600);
         } else {
           console.log("These are same pics");
           click += 1;
@@ -291,16 +301,18 @@ function flipCard() {
         valueSet.add(this.value);
         idSet.add(this.id);
         if (valueSet.size == 2) {
-          for (ele of idSet.values()) {
-            const element = document.getElementById(ele);
-            element.classList.toggle("flip");
-            console.log("fliping the img back");
-          }
-          console.log("Not same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          console.log("click value at last : ", click);
+          setTimeout(() => {
+            for (ele of idSet.values()) {
+              const element = document.getElementById(ele);
+              element.classList.toggle("flip");
+              console.log("fliping the img back");
+            }
+            console.log("Not same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            console.log("click value at last : ", click);          
+          }, 600);
         } else {
           console.log("These are same pics");
           click += 1;
@@ -311,16 +323,18 @@ function flipCard() {
         valueSet.add(this.value);
         idSet.add(this.id);
         if (valueSet.size == 2) {
-          for (ele of idSet.values()) {
-            const element = document.getElementById(ele);
-            element.classList.toggle("flip");
-            console.log("fliping the img back");
-          }
-          console.log("Not same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          console.log("click value at last : ", click);
+          setTimeout(() => {
+            for (ele of idSet.values()) {
+              const element = document.getElementById(ele);
+              element.classList.toggle("flip");
+              console.log("fliping the img back");
+            }
+            console.log("Not same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            console.log("click value at last : ", click);       
+          }, 600);
         } else {
           console.log("These are same pics");
           valueSet.clear();
