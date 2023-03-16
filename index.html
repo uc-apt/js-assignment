@@ -9,69 +9,96 @@
     <title>JS assignment</title>
   </head>
   <body>
-    <div class="main-container">
-      <!-- area to show images -->
-      <div class="grid-container" id="grid-container-main">
-        <!-- <div class="grid-items" id="grid-item1">
-          <div class="front front-style" onclick="flipCard()" id="front1" value="" ></div>
-          <img src="" alt="pictures" class="img-card"     id="img-card1">
+    <div id="modalID" class="timeUpModal">
+      Time Up!
+      <button id="timeUpBtn" onclick="reload()">Ok</button>
+    </div>
+
+
+    <div style="display: flex;margin: auto; height: 100%;width: 100%;justify-content: space-evenly;">
+      <div>
+        <div class="main-container">
+          <!-- area to show images -->
+          <div class="grid-container" id="grid-container-main">
+            <!-- <div class="grid-items" id="grid-item1">
+              <div class="front front-style" onclick="flipCard()" id="front1" value="" ></div>
+              <img src="" alt="pictures" class="img-card"     id="img-card1">
+            </div>
+            <div class="grid-items" id="grid-item2">
+              <div class="front front-style" onclick="flipCard()" id="front2" value="" ></div>
+              <img src="" alt="pictures" class="img-card"     id="img-card2">
+            </div>
+          -->
+          </div>
+          <!-- the area for user dashboard -->
+          <div class="dashboard-area">
+            <div class="game-modes">
+              <div id="option1" class="options">
+                <input
+                  type="radio"
+                  name="game-mode"
+                  id="mode1"
+                  value="mode1"
+                  onchange="get_value()"
+                  class="options-radio"
+                />
+                <p>series of 2 pics</p>
+              </div>
+              <div id="option2" class="options">
+                <input
+                  type="radio"
+                  name="game-mode"
+                  id="mode2"
+                  value="mode2"
+                  onchange="get_value()"
+                  class="options-radio"
+                />
+                <p>series of 3 pics</p>
+              </div>
+              <div id="option3" class="options">
+                <input
+                  type="radio"
+                  name="game-mode"
+                  id="mode3"
+                  value="mode3"
+                  onchange="get_value()"
+                  class="options-radio"
+                />
+                <p>series of 4 pics</p>
+              </div>
+            </div>
+            <div class="main-options">
+              <button id="new-game-btn" class="main-btn" onclick="start_game_btn()">
+                NEW GAME
+              </button>
+              <button id="show-btn" class="main-btn" onclick="show_btn_function()">
+                SHOW
+              </button>
+              <button id="help-btn" class="main-btn" onclick="help_btn_function()">
+                HELP
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="grid-items" id="grid-item2">
-          <div class="front front-style" onclick="flipCard()" id="front2" value="" ></div>
-          <img src="" alt="pictures" class="img-card"     id="img-card2">
-        </div>
-      -->
       </div>
-      <!-- the area for user dashboard -->
-      <div class="dashboard-area">
-        <div class="game-modes">
-          <div id="option1" class="options">
-            <input
-              type="radio"
-              name="game-mode"
-              id="mode1"
-              value="mode1"
-              onchange="get_value()"
-              class="options-radio"
-            />
-            <p>series of 2 pics</p>
-          </div>
-          <div id="option2" class="options">
-            <input
-              type="radio"
-              name="game-mode"
-              id="mode2"
-              value="mode2"
-              onchange="get_value()"
-              class="options-radio"
-            />
-            <p>series of 3 pics</p>
-          </div>
-          <div id="option3" class="options">
-            <input
-              type="radio"
-              name="game-mode"
-              id="mode3"
-              value="mode3"
-              onchange="get_value()"
-              class="options-radio"
-            />
-            <p>series of 4 pics</p>
+
+      <div style="display: flex;flex-direction: column;">
+        <div style="width: 170px;margin: auto;border-radius: 20px;height: 70px;border: 15px solid black;background-color: #55ff55;">
+          <div id="timerCont">
+            <p id="timer">60</p>
+            <p>s left</p>
           </div>
         </div>
-        <div class="main-options">
-          <button id="new-game-btn" class="main-btn" onclick="start_game_btn()">
-            NEW GAME
-          </button>
-          <button id="show-btn" class="main-btn" onclick="show_btn_function()">
-            SHOW
-          </button>
-          <button id="help-btn" class="main-btn" onclick="help_btn_function()">
-            HELP
-          </button>
+        
+        <div class="countContainer">
+          Correct : 
+          <p id="countData" class="correctCont">0</p>
         </div>
+
       </div>
     </div>
+
+
     <script src="app.js"></script>
   </body>
 </html>
