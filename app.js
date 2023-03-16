@@ -126,28 +126,63 @@ const set_img = (img, front, arr) => {
   }
 };
 
+//timer function
+const timerOn = (e) => {
+  if(e === undefined){
+
+  }else{
+    document.getElementById('timer').innerText = e
+  }
+}
+
+let startClick = 0;
 
 const start_game_btn = (img) => {
   if (mode === undefined) {
     window.alert("Please select a mode");
   } else {
+    startClick+=1;
+    if(startClick === 1){
+
+    }else{
+      
+    }
     get_value();
     var array = get_random_img();
     console.log(array);
     const img = document.getElementsByTagName("img");
     const front = document.getElementsByClassName("front");
+    //disabling the other modes
+    if(mode === "mode1"){
+      document.getElementById('mode2').setAttribute('disabled','');
+      document.getElementById('mode3').setAttribute('disabled','');
+    }else if(mode === "mode2"){
+      document.getElementById('mode1').setAttribute('disabled','');
+      document.getElementById('mode3').setAttribute('disabled','');
+    }else{
+      document.getElementById('mode1').setAttribute('disabled','');
+      document.getElementById('mode2').setAttribute('disabled','');
+    }
+
     //setting the images in the random way and according to the mode
     set_img(img, front, array);
-    window.alert('Press ok to start ,you will have 60 seconds')
+    var t = 60;
+    setInterval(() => {
+      timerOn(t,startClick)
+      t-=1;
+    }, 1000);
+    // timerOn();
     // setting the logic according to the mode of the game
     setTimeout(() => {
-      window.alert("Time up !");
+      document.getElementById('modalID').classList.toggle('modelOpen')
       //resetting the game setting
-      location.reload();
-    }, 60000);
+      //click to reload
+    }, 61000);
   }
 };
-
+function reload(){
+  location.reload();
+}
 // game logic
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -178,11 +213,13 @@ function flipCard() {
           click = 1;
           correct += 1;
           console.log("correct : ", correct);
+          document.getElementById('countData').innerText = correct
           if (correct === 12) {
+            document.getElementById('countData').innerText = correct
             setTimeout(() => {
               window.alert("Congrats !");
               location.reload();
-            }, 750);
+            }, 500);
           }
         } else {
           setTimeout(() => {
@@ -259,7 +296,7 @@ function flipCard() {
             setTimeout(() => {
               window.alert("Congrats !");
               location.reload();
-            }, 750);
+            }, 500);
           }
         }
 
@@ -346,7 +383,7 @@ function flipCard() {
             setTimeout(() => {
               window.alert("Congrats !");
               location.reload();
-            }, 750);
+            }, 500);
           }
         }
         break ;
@@ -363,7 +400,6 @@ const show_btn_function = () => {
   if (mode === undefined) {
     window.alert("Please start the game first");
   } else {
-    if (confirm("This will show the answer")) {
       //write the logic to show the answer
       const img = document.getElementsByTagName("img");
       const front = document.getElementsByClassName("front");
@@ -381,9 +417,6 @@ const show_btn_function = () => {
           front[i].classList.remove("front-show-btn");
         }
       }, 3000);
-    } else {
-      console.log("opted out");
-    }
   }
 };
 
