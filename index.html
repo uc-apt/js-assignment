@@ -10,10 +10,19 @@
   </head>
   <body>
     <div id="modalID" class="timeUpModal">
-      Time Up!
+      <h1>Time up!</h1>
       <button id="timeUpBtn" onclick="reload()">Ok</button>
     </div>
-
+    <div id="modalRestart" class="timeUpModal">
+      <div>
+        You really want to restart the game?
+      </div>
+      <div>
+        <button class="restartBts" id="restartBtn" onclick="restart()">Yes</button>
+        <button class="restartBts" id="cancelRestart" onclick="noRestart()">No</button>
+      </div>
+    </div>
+    
 
     <div style="display: flex;margin: auto; height: 100%;width: 100%;justify-content: space-evenly;">
       <div>
@@ -76,6 +85,9 @@
               </button>
               <button id="help-btn" class="main-btn" onclick="help_btn_function()">
                 HELP
+              </button>
+              <button id="restart-btn" class="main-btn" onclick="restart_btn_funtion()">
+                Restart
               </button>
             </div>
           </div>
