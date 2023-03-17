@@ -93,7 +93,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 125px;
+    height: 180px;
 }
 .main-btn{
     height: 30px;
@@ -130,9 +130,10 @@
 
 #timeUpBtn{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: medium;
-    width: 40px;
-    height: 40px;
+    font-size: 27px;
+    background-color: yellow;
+    width: 119px;
+    height: 48px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -158,4 +159,19 @@
 .correctCont{
     font-size: xx-large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.restartBts{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 27px;
+    background-color: yellow;
+    width: 119px;
+    height: 48px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#modalRestart{
+    flex-direction: column;
+    height: 100%;
 }
