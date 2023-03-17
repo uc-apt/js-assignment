@@ -163,6 +163,8 @@ const start_game_btn = (img) => {
       document.getElementById('mode1').setAttribute('disabled','');
       document.getElementById('mode2').setAttribute('disabled','');
     }
+    
+    document.getElementById('new-game-btn').setAttribute('disabled','')
 
     //setting the images in the random way and according to the mode
     set_img(img, front, array);
@@ -432,3 +434,23 @@ Then, 3rd pic is flipped, if it is same to the 1st and 2nd pic, it stays visible
 const help_btn_function = () => {
   window.alert(instructions);
 };
+
+
+// restart btn functionality
+
+const restart_btn_funtion = () => {
+  if(mode === undefined){
+    window.alert('Please first start the game!')
+  }else{
+    document.getElementById('modalRestart').classList.toggle('modelOpen')
+
+  }
+}
+
+const restart = () => {
+  location.reload()
+}
+
+const noRestart = () => {
+  document.getElementById('modalRestart').classList.toggle('modelOpen')
+}
