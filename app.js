@@ -174,9 +174,11 @@ const start_game_btn = (img) => {
     // timerOn();
     // setting the logic according to the mode of the game
     setTimeout(() => {
-      document.getElementById('modalID').classList.toggle('modelOpen')
+      // document.getElementById('modalID').classList.toggle('modelOpen')
       //resetting the game setting
       //click to reload
+      window.alert('Time up !')
+      location.reload()
     }, 61000);
   }
 };
@@ -194,182 +196,187 @@ var idSet = new Set([]);
 var click = 1;
 var correct = 0;
 function flipCard() {
-  if (mode  == 'mode1'){
-    switch (click) {
-      case 1:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        click += 1;
-        break;
-      case 2:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        if (valueSet.size == 1) {
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          correct += 1;
-          document.getElementById('countData').innerText = correct
-          if (correct === 12) {
-            document.getElementById('countData').innerText = correct
-            setTimeout(() => {
-              window.alert("Congrats !");
-              location.reload();
-            }, 500);
-          }
-        } else {
-          setTimeout(() => {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-            }
+  const valu = document.getElementById('new-game-btn').getAttribute('disabled')
+  if(valu != null){
+    if (mode  == 'mode1'){
+      switch (click) {
+        case 1:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          click += 1;
+          break;
+        case 2:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          if (valueSet.size == 1) {
             valueSet.clear();
             idSet.clear();
             click = 1;
-          }, 600);
-        }
-        break;
-      default:
-        break;
-    }
-  }else if(mode == 'mode2'){
-    switch (click) {
-      case 1:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        click += 1;
-        break;
-      case 2:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        if (valueSet.size == 2) {
-          setTimeout(() => {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
+            correct += 1;
+            document.getElementById('countData').innerText = correct
+            if (correct === 12) {
+              document.getElementById('countData').innerText = correct
+              setTimeout(() => {
+                window.alert("Congrats !");
+                location.reload();
+              }, 500);
             }
-            valueSet.clear();
-            idSet.clear();
-            click = 1;    
-          }, 600);
-        } else {
-          click += 1;
-        }
-        break;
-      case 3:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        if (valueSet.size == 2) {
-          setTimeout(() => {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-            }
-            valueSet.clear();
-            idSet.clear();
-            click = 1;  
-          }, 600);
-        } else {
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          correct += 1;
-          document.getElementById('countData').innerText = correct
-          if (correct === 8) {
+          } else {
             setTimeout(() => {
-              window.alert("Congrats !");
-              location.reload();
-            }, 500);
+              for (ele of idSet.values()) {
+                const element = document.getElementById(ele);
+                element.classList.toggle("flip");
+              }
+              valueSet.clear();
+              idSet.clear();
+              click = 1;
+            }, 600);
           }
-        }
-
-      default:
-        break;
-    }
-  }else if (mode == 'mode3'){
-    switch (click) {
-      case 1:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        click += 1;
-        break;
-      case 2:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        if (valueSet.size == 2) {
-          setTimeout(() => {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-            }
-            valueSet.clear();
-            idSet.clear();
-            click = 1;     
-          }, 600);
-        } else {
+          break;
+        default:
+          break;
+      }
+    }else if(mode == 'mode2'){
+      switch (click) {
+        case 1:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
           click += 1;
-        }
-        break;
-      case 3:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        if (valueSet.size == 2) {
-          setTimeout(() => {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-            }
-            console.log("Not same pics");
-            valueSet.clear();
-            idSet.clear();
-            click = 1;       
-          }, 600);
-        } else {
-          click += 1;
-        }
-        break;
-      case 4:
-        this.classList.toggle("flip");
-        valueSet.add(this.value);
-        idSet.add(this.id);
-        if (valueSet.size == 2) {
-          setTimeout(() => {
-            for (ele of idSet.values()) {
-              const element = document.getElementById(ele);
-              element.classList.toggle("flip");
-            }
-            valueSet.clear();
-            idSet.clear();
-            click = 1;    
-          }, 600);
-        } else {
-          console.log("These are same pics");
-          valueSet.clear();
-          idSet.clear();
-          click = 1;
-          correct += 1;
-          document.getElementById('countData').innerText = correct
-          if (correct === 6) {
+          break;
+        case 2:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          if (valueSet.size == 2) {
             setTimeout(() => {
-              window.alert("Congrats !");
-              location.reload();
-            }, 500);
+              for (ele of idSet.values()) {
+                const element = document.getElementById(ele);
+                element.classList.toggle("flip");
+              }
+              valueSet.clear();
+              idSet.clear();
+              click = 1;    
+            }, 600);
+          } else {
+            click += 1;
           }
-        }
-        break ;
-      
-          
-      default:
-        break;
-    }      
+          break;
+        case 3:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          if (valueSet.size == 2) {
+            setTimeout(() => {
+              for (ele of idSet.values()) {
+                const element = document.getElementById(ele);
+                element.classList.toggle("flip");
+              }
+              valueSet.clear();
+              idSet.clear();
+              click = 1;  
+            }, 600);
+          } else {
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            correct += 1;
+            document.getElementById('countData').innerText = correct
+            if (correct === 8) {
+              setTimeout(() => {
+                window.alert("Congrats !");
+                location.reload();
+              }, 500);
+            }
+          }
+  
+        default:
+          break;
+      }
+    }else if (mode == 'mode3'){
+      switch (click) {
+        case 1:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          click += 1;
+          break;
+        case 2:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          if (valueSet.size == 2) {
+            setTimeout(() => {
+              for (ele of idSet.values()) {
+                const element = document.getElementById(ele);
+                element.classList.toggle("flip");
+              }
+              valueSet.clear();
+              idSet.clear();
+              click = 1;     
+            }, 600);
+          } else {
+            click += 1;
+          }
+          break;
+        case 3:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          if (valueSet.size == 2) {
+            setTimeout(() => {
+              for (ele of idSet.values()) {
+                const element = document.getElementById(ele);
+                element.classList.toggle("flip");
+              }
+              console.log("Not same pics");
+              valueSet.clear();
+              idSet.clear();
+              click = 1;       
+            }, 600);
+          } else {
+            click += 1;
+          }
+          break;
+        case 4:
+          this.classList.toggle("flip");
+          valueSet.add(this.value);
+          idSet.add(this.id);
+          if (valueSet.size == 2) {
+            setTimeout(() => {
+              for (ele of idSet.values()) {
+                const element = document.getElementById(ele);
+                element.classList.toggle("flip");
+              }
+              valueSet.clear();
+              idSet.clear();
+              click = 1;    
+            }, 600);
+          } else {
+            console.log("These are same pics");
+            valueSet.clear();
+            idSet.clear();
+            click = 1;
+            correct += 1;
+            document.getElementById('countData').innerText = correct
+            if (correct === 6) {
+              setTimeout(() => {
+                window.alert("Congrats !");
+                location.reload();
+              }, 500);
+            }
+          }
+          break ;
+        
+            
+        default:
+          break;
+      }      
+    }
+  }else{
+    window.alert('Please first click on the New Game button')
   }
 }
 
@@ -420,8 +427,12 @@ const restart_btn_funtion = () => {
   if(mode === undefined || valu === null){
     window.alert('Please first start the game!')
   }else{
-    document.getElementById('modalRestart').classList.toggle('modelOpen')
-
+    // document.getElementById('modalRestart').classList.toggle('modelOpen')
+    var conf = confirm('You really want to restart the game ?')
+    if(conf == true){
+      console.log('restarting')
+      location.reload()
+    }
   }
 }
 
