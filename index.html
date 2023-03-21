@@ -9,20 +9,22 @@
     <title>JS assignment</title>
   </head>
   <body>
+
     <div id="modalID" class="timeUpModal">
       <h1>Time up!</h1>
       <button id="timeUpBtn" onclick="reload()">Ok</button>
     </div>
-    <div id="modalRestart" class="timeUpModal">
-      <div>
-        You really want to restart the game?
+
+
+      <div id="modalRestart" class="restartModal">
+        <div>
+          You really want to restart the game?
+        </div>
+        <div>
+          <button class="restartBts" id="restartBtn" onclick="restart()">Yes</button>
+          <button class="restartBts" id="cancelRestart" onclick="noRestart()">No</button>
+        </div>
       </div>
-      <div>
-        <button class="restartBts" id="restartBtn" onclick="restart()">Yes</button>
-        <button class="restartBts" id="cancelRestart" onclick="noRestart()">No</button>
-      </div>
-    </div>
-    
 
     <div style="display: flex;margin: auto; height: 100%;width: 100%;justify-content: space-evenly;">
       <div>
@@ -51,7 +53,7 @@
                   onchange="get_value()"
                   class="options-radio"
                 />
-                <p>series of 2 pics</p>
+                <div style="display: flex;flex-direction: column;justify-content: center;">series of 2 pics</div>
               </div>
               <div id="option2" class="options">
                 <input
@@ -62,7 +64,7 @@
                   onchange="get_value()"
                   class="options-radio"
                 />
-                <p>series of 3 pics</p>
+                <div style="display: flex;flex-direction: column;justify-content: center;">series of 3 pics</div>
               </div>
               <div id="option3" class="options">
                 <input
@@ -73,8 +75,8 @@
                   onchange="get_value()"
                   class="options-radio"
                 />
-                <p>series of 4 pics</p>
-              </div>
+                <div style="display: flex;flex-direction: column;justify-content: center;">series of 4 pics</div>
+               </div>
             </div>
             <div class="main-options">
               <button id="new-game-btn" class="main-btn" onclick="start_game_btn()">
