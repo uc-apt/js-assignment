@@ -1,8 +1,7 @@
 const gridContainer = document.getElementById('grid-container-main');
-console.log(typeof gridContainer)
 for(let i = 1 ; i < 25 ; i++){
   gridContainer.innerHTML += `<div class="grid-items" id="grid-item${i}">
-  <div class="front front-style" onclick="flipCard()" id="front${i}" value=""></div>
+  <div class="front front-style"  id="front${i}" value=""></div>
   <img src="" alt="pictures" class="img-card"     id="img-card${i}">
   </div>`
 }
@@ -149,7 +148,6 @@ const start_game_btn = (img) => {
     }
     get_value();
     var array = get_random_img();
-    console.log(array);
     const img = document.getElementsByTagName("img");
     const front = document.getElementsByClassName("front");
     //disabling the other modes
@@ -209,12 +207,10 @@ function flipCard() {
         valueSet.add(this.value);
         idSet.add(this.id);
         if (valueSet.size == 1) {
-          console.log("These are same pics");
           valueSet.clear();
           idSet.clear();
           click = 1;
           correct += 1;
-          console.log("correct : ", correct);
           document.getElementById('countData').innerText = correct
           if (correct === 12) {
             document.getElementById('countData').innerText = correct
@@ -228,9 +224,7 @@ function flipCard() {
             for (ele of idSet.values()) {
               const element = document.getElementById(ele);
               element.classList.toggle("flip");
-              console.log("fliping the img back");
             }
-            console.log("Not same pics");
             valueSet.clear();
             idSet.clear();
             click = 1;
@@ -257,16 +251,12 @@ function flipCard() {
             for (ele of idSet.values()) {
               const element = document.getElementById(ele);
               element.classList.toggle("flip");
-              console.log("fliping the img back");
             }
-            console.log("Not same pics");
             valueSet.clear();
             idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);     
+            click = 1;    
           }, 600);
         } else {
-          console.log("These are same pics");
           click += 1;
         }
         break;
@@ -279,21 +269,17 @@ function flipCard() {
             for (ele of idSet.values()) {
               const element = document.getElementById(ele);
               element.classList.toggle("flip");
-              console.log("fliping the img back");
             }
-            console.log("Not same pics");
             valueSet.clear();
             idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);     
+            click = 1;  
           }, 600);
         } else {
-          console.log("These are same pics");
           valueSet.clear();
           idSet.clear();
           click = 1;
           correct += 1;
-          console.log("correct : ", correct);
+          document.getElementById('countData').innerText = correct
           if (correct === 8) {
             setTimeout(() => {
               window.alert("Congrats !");
@@ -322,16 +308,12 @@ function flipCard() {
             for (ele of idSet.values()) {
               const element = document.getElementById(ele);
               element.classList.toggle("flip");
-              console.log("fliping the img back");
             }
-            console.log("Not same pics");
             valueSet.clear();
             idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);     
+            click = 1;     
           }, 600);
         } else {
-          console.log("These are same pics");
           click += 1;
         }
         break;
@@ -344,16 +326,13 @@ function flipCard() {
             for (ele of idSet.values()) {
               const element = document.getElementById(ele);
               element.classList.toggle("flip");
-              console.log("fliping the img back");
             }
             console.log("Not same pics");
             valueSet.clear();
             idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);          
+            click = 1;       
           }, 600);
         } else {
-          console.log("These are same pics");
           click += 1;
         }
         break;
@@ -366,13 +345,10 @@ function flipCard() {
             for (ele of idSet.values()) {
               const element = document.getElementById(ele);
               element.classList.toggle("flip");
-              console.log("fliping the img back");
             }
-            console.log("Not same pics");
             valueSet.clear();
             idSet.clear();
-            click = 1;
-            console.log("click value at last : ", click);       
+            click = 1;    
           }, 600);
         } else {
           console.log("These are same pics");
@@ -380,7 +356,7 @@ function flipCard() {
           idSet.clear();
           click = 1;
           correct += 1;
-          console.log('correct : ',correct);
+          document.getElementById('countData').innerText = correct
           if (correct === 6) {
             setTimeout(() => {
               window.alert("Congrats !");
@@ -399,7 +375,8 @@ function flipCard() {
 
 // show btn functionality
 const show_btn_function = () => {
-  if (mode === undefined) {
+  const valu = document.getElementById('new-game-btn').getAttribute('disabled')
+  if (mode === undefined || valu === null) {
     window.alert("Please start the game first");
   } else {
       //write the logic to show the answer
@@ -439,7 +416,8 @@ const help_btn_function = () => {
 // restart btn functionality
 
 const restart_btn_funtion = () => {
-  if(mode === undefined){
+  const valu = document.getElementById('new-game-btn').getAttribute('disabled')
+  if(mode === undefined || valu === null){
     window.alert('Please first start the game!')
   }else{
     document.getElementById('modalRestart').classList.toggle('modelOpen')
