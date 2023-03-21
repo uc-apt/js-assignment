@@ -124,7 +124,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+    z-index: 10;
 
 }
 
@@ -136,10 +136,6 @@
     height: 48px;
     border-radius: 10px;
     cursor: pointer;
-}
-
-.modelOpen{
-    display: flex;
 }
 
 .countContainer{
@@ -173,5 +169,28 @@
 
 #modalRestart{
     flex-direction: column;
-    height: 100%;
+    height: 20%;
+    margin-top: 100px;
+    margin-left: 110px;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 90px;
+    
+}
+
+.restartModal{
+    display: none;
+    width: 45%;
+    height: 20%;
+    background-color: red;
+    position: absolute;
+    font-size: xx-large;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.modelOpen{
+    display: flex;
 }
