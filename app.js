@@ -10,7 +10,7 @@ for(let i = 1 ; i < 25 ; i++){
 let mode;
 
 const options_radio = document.getElementsByClassName("options-radio");
-var arr = [].slice.call(options_radio);
+let arr = [].slice.call(options_radio);
 
 // looping through the options_radio to get the value
 const get_value = () => {
@@ -76,7 +76,7 @@ const img_arr_data = [
 ];
 
 const getRanNum = (n, arr) => {
-  var set1 = new Set([]);
+  let set1 = new Set([]);
   while (true) {
     set1.add(Math.floor(Math.random() * 12));
     if (set1.size === n) {
@@ -84,7 +84,6 @@ const getRanNum = (n, arr) => {
     }
   }
   arr = Array.from(set1);
-  // console.log(arr)
   return arr;
 };
 
@@ -127,10 +126,8 @@ const set_img = (img, front, arr) => {
 
 //timer function
 const timerOn = (e) => {
-  if(e === undefined){
-
-  }else{
-    document.getElementById('timer').innerText = e
+  if(!(e === undefined)){
+    document.getElementById('timer').innerText = e;
   }
 }
 
@@ -140,14 +137,9 @@ const start_game_btn = (img) => {
   if (mode === undefined) {
     window.alert("Please select a mode");
   } else {
-    startClick+=1;
-    if(startClick === 1){
-
-    }else{
-      
-    }
+    startClick+=1; // check is it is neccessary
     get_value();
-    var array = get_random_img();
+    let array = get_random_img();
     const img = document.getElementsByTagName("img");
     const front = document.getElementsByClassName("front");
     //disabling the other modes
@@ -166,7 +158,7 @@ const start_game_btn = (img) => {
 
     //setting the images in the random way and according to the mode
     set_img(img, front, array);
-    var t = 60;
+    let t = 60;
     setInterval(() => {
       timerOn(t,startClick)
       t-=1;
@@ -331,7 +323,6 @@ function flipCard() {
                 const element = document.getElementById(ele);
                 element.classList.toggle("flip");
               }
-              console.log("Not same pics");
               valueSet.clear();
               idSet.clear();
               click = 1;       
@@ -355,7 +346,6 @@ function flipCard() {
               click = 1;    
             }, 600);
           } else {
-            console.log("These are same pics");
             valueSet.clear();
             idSet.clear();
             click = 1;
@@ -428,9 +418,8 @@ const restart_btn_funtion = () => {
     window.alert('Please first start the game!')
   }else{
     // document.getElementById('modalRestart').classList.toggle('modelOpen')
-    var conf = confirm('You really want to restart the game ?')
+    let conf = confirm('You really want to restart the game ?')
     if(conf == true){
-      console.log('restarting')
       location.reload()
     }
   }
